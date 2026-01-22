@@ -6,6 +6,12 @@ Streamlit application for interactive generation and visualization of
 mathematical geometries.
 """
 
+import sys
+import os
+
+# Add parent directory to path to allow imports
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 import streamlit as st
 import numpy as np
 import trimesh
