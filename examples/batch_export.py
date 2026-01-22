@@ -49,7 +49,7 @@ def batch_gyroid_variations():
         # Export
         filename = f"gyroid_scale_{scale:.1f}.stl"
         mesh.export(filename)
-        print(f"    ✅ Exported: {filename}")
+        print(f"    [OK] Exported: {filename}")
         print(f"    Volume: {analysis['volume']:.2f} mm³")
         print(f"    Estimated mass: {material['mass']:.2f} g")
     
@@ -86,7 +86,7 @@ def batch_thickness_variations():
         # Export
         filename = f"gyroid_thickness_{thickness:.1f}.stl"
         mesh.export(filename)
-        print(f"    ✅ Exported: {filename}")
+        print(f"    [OK] Exported: {filename}")
         print(f"    Volume: {analysis['volume']:.2f} mm³")
         print(f"    Surface Area: {analysis['surface_area']:.2f} mm²")
     
@@ -148,6 +148,6 @@ if __name__ == "__main__":
     parametric_results = parametric_study()
     
     print("\n" + "=" * 60)
-    print("✅ Batch export completed successfully!")
+    print("[OK] Batch export completed successfully!")
     print(f"   Generated {len(scale_results) + len(thickness_results)} STL files")
     print("=" * 60)

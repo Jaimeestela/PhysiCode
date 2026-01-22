@@ -83,7 +83,7 @@ def example_sinusoidal():
     print(f"  Surface Area: {analysis['surface_area']:.2f} mm²")
     
     mesh.export("sinusoidal_field.stl")
-    print("✅ Exported to: sinusoidal_field.stl\n")
+    print("[OK] Exported to: sinusoidal_field.stl\n")
     
     return mesh
 
@@ -106,7 +106,7 @@ def example_sphere():
     print(f"  Expected radius: 3.0")
     
     mesh.export("sphere_field.stl")
-    print("✅ Exported to: sphere_field.stl\n")
+    print("[OK] Exported to: sphere_field.stl\n")
     
     return mesh
 
@@ -128,7 +128,7 @@ def example_torus():
     print(f"  Surface Area: {analysis['surface_area']:.2f} mm²")
     
     mesh.export("torus_field.stl")
-    print("✅ Exported to: torus_field.stl\n")
+    print("[OK] Exported to: torus_field.stl\n")
     
     return mesh
 
@@ -145,5 +145,5 @@ if __name__ == "__main__":
     example_torus()
     
     print("=" * 60)
-    print("✅ All custom field examples completed!")
+    print("[OK] All custom field examples completed!")
     print("=" * 60)

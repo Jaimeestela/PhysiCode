@@ -44,7 +44,7 @@ def generate_gyroid_example():
     # Export STL
     output_file = "gyroid_surface.stl"
     mesh.export(output_file)
-    print(f"\n✅ Exported to: {output_file}")
+    print(f"\n[OK] Exported to: {output_file}")
     
     return mesh
 
@@ -76,7 +76,7 @@ def generate_schwarz_p_example():
     # Export STL
     output_file = "schwarz_p_surface.stl"
     mesh.export(output_file)
-    print(f"\n✅ Exported to: {output_file}")
+    print(f"\n[OK] Exported to: {output_file}")
     
     return mesh
 
@@ -106,7 +106,7 @@ def generate_solid_gyroid_example():
     # Export STL
     output_file = "gyroid_solid.stl"
     mesh.export(output_file)
-    print(f"\n✅ Exported to: {output_file}")
+    print(f"\n[OK] Exported to: {output_file}")
     
     return mesh
 
@@ -122,5 +122,5 @@ if __name__ == "__main__":
     solid_mesh = generate_solid_gyroid_example()
     
     print("\n" + "=" * 60)
-    print("✅ All examples completed successfully!")
+    print("[OK] All examples completed successfully!")
     print("=" * 60)

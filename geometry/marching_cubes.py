@@ -71,20 +71,27 @@ def generate_mesh(field: ScalarField,
     # Evaluate field on grid
     field_values = field(X, Y, Z)
     
-    # Use scipy's marching cubes implementation (more robust)
+    # Use scikit-image's marching cubes implementation (more robust)
     try:
         from skimage import measure
         # scikit-image has a well-tested marching cubes implementation
+        spacing = (
+            (x_max - x_min) / (resolution - 1),
+            (y_max - y_min) / (resolution - 1),
+            (z_max - z_min) / (resolution - 1)
+        )
+        
         vertices, faces, normals, values = measure.marching_cubes(
             field_values, 
             level=iso_value,
-            spacing=(
-                (x_max - x_min) / (resolution - 1),
-                (y_max - y_min) / (resolution - 1),
-                (z_max - z_min) / (resolution - 1)
-            ),
-            origin=(x_min, y_min, z_min)
+            spacing=spacing
         )
+        
+        # Transform vertices from grid coordinates to real coordinates
+        # marching_cubes returns vertices in grid space, need to add origin
+        vertices[:, 0] = vertices[:, 0] + x_min
+        vertices[:, 1] = vertices[:, 1] + y_min
+        vertices[:, 2] = vertices[:, 2] + z_min
         
         # Create trimesh object
         mesh = trimesh.Trimesh(vertices=vertices, faces=faces, vertex_normals=normals)
@@ -95,8 +102,8 @@ def generate_mesh(field: ScalarField,
         mesh = _marching_cubes_simple(field, resolution, iso_value, bounds)
     
     # Clean up mesh
-    mesh.remove_duplicate_faces()
     mesh.remove_unreferenced_vertices()
+    mesh.merge_vertices()
     
     return mesh
 
